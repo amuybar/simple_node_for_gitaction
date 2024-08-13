@@ -1,6 +1,4 @@
 # simple-nodejs-project
-# simple_node_for_gitaction
-# simple_node_for_gitaction
-# simple_node_for_gitaction
-# simple_node_for_gitaction
-# simple_node_for_gitaction
+
+``Testing the Github action in a simple project as i learn Git Actions and Testing with mocha and chai``
+

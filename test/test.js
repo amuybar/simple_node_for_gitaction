@@ -1,12 +1,52 @@
-const add = require('../index');
-const { expect } = require('chai');
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const app = require("../index");
+const expect = chai.expect;
+const should = chai.should();
 
-describe('Addition', () => {
-    it('should return 5 when adding 2 and 3', () => {
-        expect(add(2, 3)).to.equal(5);
-    });
+chai.use(chaiHttp);
 
-    it('should return 0 when adding 0 and 0', () => {
-        expect(add(0, 0)).to.equal(0);
-    });
+describe("Product APIS  Test", () => {
+  it("Should Get Product API", (done) => {
+    chai
+      .request(app)
+      .get("/product/api")
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.a('object');
+        console.log(res.body)
+        done();
+      });
+  });
+  it("Should Post Product API", (done) => {
+    chai.request(app)
+      .post("/product/api")
+      .end((err, res) => {
+      res.should.have.status(201);
+    })
+  });
+  it("Should Register User", (done) => {
+    chai.request(app)
+    .post("/auth/register")
+      .send({
+      username: "testuser",
+      password: "testpass"
+      })
+     .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
+  it("Should Login User", (done) => {
+    chai.request(app)
+      .send({
+      username: "testuser",
+      password: "testpass"
+      })
+      .end((err, res) => {
+      res.should.have.status(200);
+    })
+   });
+
+
 });
