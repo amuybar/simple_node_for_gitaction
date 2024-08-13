@@ -1,11 +1,12 @@
 {
   "name": "simple-nodejs-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple Node.js project with testing and environment configurations.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha" 
-    
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development node index.js",
+    "test": "NODE_ENV=test mocha --timeout 10000 --exit"
   },
   "keywords": [],
   "author": "",
